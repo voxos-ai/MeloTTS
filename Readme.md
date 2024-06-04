@@ -1,6 +1,6 @@
 # MeloTTS Server
 
-This is TTS Server use [Melo TTS](https://github.com/myshell-ai/MeloTTS) as a base, We do some changes in the code base and created a FAST API server by which we get good performance for 100 chars we get response about 200~230 milliseconds using G5 aws instance
+This is TTS Server use [Melo TTS](https://github.com/myshell-ai/MeloTTS) as a base, We do some changes in the code base and created a FAST API server by which we get good performance for 100 chars we get response about `200~230 milliseconds latency` using G5 aws instance
 
 
 ### Install
