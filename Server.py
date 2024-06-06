@@ -17,7 +17,7 @@ async def lifespan(app: FastAPI):
     global TTS_Server
     global speaker_ids
     # Load the ML model
-    TTS_Server = TTS('EN')
+    TTS_Server = TTS('EN',device='cuda:1')
     speaker_ids = TTS_Server.hps.data.spk2id
     yield
     # Clean up the ML models and release the resources
