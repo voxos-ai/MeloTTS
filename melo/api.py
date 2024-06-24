@@ -74,10 +74,14 @@ class TTS(nn.Module):
     @staticmethod
     def split_sentences_into_pieces(text, language, quiet=False):
         texts = split_sentence(text, language_str=language)
+        if len(texts) == 0:
+            return ""
+
         if not quiet:
             print(" > Text split to sentences.")
             print('\n'.join(texts))
             print(" > ===========================")
+        print(text)
         return texts
 
     def tts_to_file(self, text, speaker_id, output_path=None, sdp_ratio=0.2, noise_scale=0.6, noise_scale_w=0.8, speed=1.0, pbar=None, format=None, position=None, quiet=False,):
@@ -138,6 +142,8 @@ class TTS(nn.Module):
         texts = self.split_sentences_into_pieces(text, language, quiet)
         audio_list = []
         for t in texts:
+            if t is None:
+                continue
             if language in ['EN', 'ZH_MIX_EN']:
                 t = re.sub(r'([a-z])([A-Z])', r'\1 \2', t)
             device = self.device
